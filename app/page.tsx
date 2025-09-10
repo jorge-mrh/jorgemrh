@@ -1,6 +1,6 @@
 "use client";
 
-import CustomBadge from "@/components/CustomBadge";
+import CustomDrawerBadge from "@/components/CustomDrawerBadge";
 import { LoginForm } from "@/components/Login";
 import TypographyH1 from "@/components/Typography/H1";
 import { TypographyP } from "@/components/Typography/P";
@@ -56,9 +56,13 @@ export default function Home() {
           <ToggleGroupItem value="Design">Design</ToggleGroupItem>
           <ToggleGroupItem value="Interests">Interests</ToggleGroupItem>
         </ToggleGroup>
+        <TypographyP
+          text="Click on any of the items below to learn more."
+          textSize="text-xs"
+        />
         <div className="flex flex-wrap w-80 gap-2 mb-2">
           {getCurrentSkills().map((skill, index) => (
-            <CustomBadge
+            <CustomDrawerBadge
               key={index}
               text={skill.name}
               color={skill.color}

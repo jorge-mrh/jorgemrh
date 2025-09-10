@@ -1,4 +1,4 @@
-import { TypographyGeneralProps } from "../types/props";
+import { TypographyGeneralProps } from "../types";
 
 export default function TypographyH1({ text }: TypographyGeneralProps) {
   return (

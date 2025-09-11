@@ -1,3 +1,4 @@
+"use client";
 import * as React from "react";
 import * as NavigationMenuPrimitive from "@radix-ui/react-navigation-menu";
 import { cva } from "class-variance-authority";
@@ -66,12 +67,20 @@ function NavigationMenuTrigger({
   className,
   children,
   ...props
-}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger>) {
+}: React.ComponentProps<typeof NavigationMenuPrimitive.Trigger> & {
+  triggerMode?: "hover" | "click";
+}) {
+  const { triggerMode = "click" } = props;
   return (
     <NavigationMenuPrimitive.Trigger
       data-slot="navigation-menu-trigger"
       className={cn(navigationMenuTriggerStyle(), "group", className)}
       {...props}
+      {...(triggerMode === "click" && {
+        onPointerEnter: (event) => event.preventDefault(),
+        onPointerMove: (event) => event.preventDefault(),
+        onPointerLeave: (event) => event.preventDefault(),
+      })}
     >
       {children}{" "}
       <ChevronDownIcon

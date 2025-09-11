@@ -1,0 +1,10 @@
+{
+  "development": [
+    {
+      "TypeScript": "I began using TypeScript in 2024 at SDILab. With a background in JavaScript and C#, TypeScript gives me the best of both worlds: the flexibility of JavaScript with the safety and structure of a typed language."
+    },
+    {
+      "React": "I began using React in 2024 at SDILab. Since then, I've used it to build both personal and professional projects. Here are some tools and libraries I've worked with."
+    }
+  ]
+}

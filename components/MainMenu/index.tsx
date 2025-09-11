@@ -26,8 +26,8 @@ export default function MainMenu() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>curriculum</NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full left-0 mt-1">
-              <ul className="w-[200px]">
+            <NavigationMenuContent className="absolute top-full mt-1">
+              <ul className="w-30">
                 <li>
                   <NavigationMenuLink asChild>
                     <Link
@@ -70,15 +70,14 @@ export default function MainMenu() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuTrigger>fun stuff</NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full left-0 mt-1">
-              <ul className="w-[200px]">
+            <NavigationMenuContent className="absolute top-full mt-1 ">
+              <ul className="w-30">
                 <li>
                   <NavigationMenuLink asChild>
                     <Link
                       href="/curriculum"
                       className="flex-row items-center gap-2"
                     >
-                      <SquareMousePointer />
                       Just Go Up
                     </Link>
                   </NavigationMenuLink>

@@ -6,13 +6,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import {
-  BookUser,
-  ExternalLink,
-  GitBranch,
-  MousePointerClick,
-  Play,
-} from "lucide-react";
+import { BookUser, GitBranch, MousePointerClick, Play } from "lucide-react";
 export default function PersonalCard() {
   return (
     <Popover>
@@ -32,8 +26,6 @@ export default function PersonalCard() {
       </PopoverTrigger>
       <PopoverContent className="w-80">
         <div className="flex flex-col gap-2">
-          <ExternalLink size={14} className="self-end" />
-
           <a
             href="https://github.com/jorge-mrh"
             target="_blank"

@@ -65,7 +65,7 @@ export default function Home() {
           </ToggleGroupItem>
         </ToggleGroup>
         <TypographyP
-          text="Click on any of the items below to learn more."
+          text="Click on any of the items below to view more."
           textSize="text-xs"
         />
         <div className="flex flex-wrap w-80 gap-2 mb-2">

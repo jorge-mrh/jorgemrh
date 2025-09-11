@@ -1,7 +1,8 @@
 "use client";
 
 import CustomDrawerBadge from "@/components/CustomDrawerBadge";
-import { LoginForm } from "@/components/Login";
+import LoginForm from "@/components/Login";
+import PersonalCard from "@/components/PersonalCard";
 import TypographyH1 from "@/components/Typography/H1";
 import { TypographyP } from "@/components/Typography/P";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
@@ -11,10 +12,12 @@ import {
   interests,
 } from "@/lib/generalFactory";
 import { BadgeElement } from "@/lib/generalTypes";
+import { getSkillComponent } from "@/lib/skillComponentMapping";
 import { useState } from "react";
 
 export default function Home() {
-  const [selectedCategory, setSelectedCategory] = useState<string>("Interests");
+  const [selectedCategory, setSelectedCategory] =
+    useState<string>("Development");
 
   const getCurrentSkills = (): BadgeElement[] => {
     switch (selectedCategory) {
@@ -33,15 +36,14 @@ export default function Home() {
     <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
       {/* COLUMN 1 */}
       <div>
-        <div>
+        <div className="flex flex-col gap-4 mb-10">
           <TypographyH1 text={"Welcome"} />
-          <div className="my-3">
-            <TypographyP
-              text={
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel massa sed felis egestas sagittis ut vel neque. Donec facilisis arcu ut ex dictum mollis. Nullam efficitur dictum nunc vitae porta."
-              }
-            />
-          </div>
+          <TypographyP
+            text={
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel massa sed felis egestas sagittis ut vel neque. Donec facilisis arcu ut ex dictum mollis. Nullam efficitur dictum nunc vitae porta."
+            }
+          />
+          <PersonalCard />
         </div>
         <ToggleGroup
           variant={"outline"}
@@ -52,9 +54,15 @@ export default function Home() {
             if (value) setSelectedCategory(value);
           }}
         >
-          <ToggleGroupItem value="Development">Development</ToggleGroupItem>
-          <ToggleGroupItem value="Design">Design</ToggleGroupItem>
-          <ToggleGroupItem value="Interests">Interests</ToggleGroupItem>
+          <ToggleGroupItem className="cursor-pointer" value="Development">
+            Development
+          </ToggleGroupItem>
+          <ToggleGroupItem className="cursor-pointer" value="Design">
+            Design
+          </ToggleGroupItem>
+          <ToggleGroupItem className="cursor-pointer" value="Interests">
+            Interests
+          </ToggleGroupItem>
         </ToggleGroup>
         <TypographyP
           text="Click on any of the items below to learn more."
@@ -67,6 +75,7 @@ export default function Home() {
               text={skill.name}
               color={skill.color}
               textColor="text-white"
+              drawerContent={getSkillComponent(skill.name)}
             />
           ))}
         </div>

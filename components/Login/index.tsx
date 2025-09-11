@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label";
 import { TypographyH2 } from "../Typography/H2";
 import { TypographyP } from "../Typography/P";
 
-export function LoginForm({
+export default function LoginForm({
   className,
   ...props
 }: React.ComponentProps<"div">) {
@@ -26,7 +26,7 @@ export function LoginForm({
           <CardDescription>
             <div className="flex row-auto gap-2">
               <TypographyP
-                text={"Login bellow to get access to hidden areas"}
+                text={"Login bellow to get access to extra content."}
               />
             </div>
           </CardDescription>
@@ -45,7 +45,7 @@ export function LoginForm({
                 <Input id="password" type="password" required />
               </div>
               <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full cursor-pointer">
                   Login
                 </Button>
               </div>

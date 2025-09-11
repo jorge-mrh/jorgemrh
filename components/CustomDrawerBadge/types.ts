@@ -12,4 +12,5 @@ export interface CustomBadgeProps {
     | "outline"
     | null
     | undefined;
+  drawerContent?: React.ReactNode;
 }

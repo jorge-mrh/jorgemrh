@@ -18,10 +18,11 @@ export default function CustomDrawerBadge({
   textColor = "text-white",
   icon,
   variant = "secondary",
+  drawerContent,
 }: CustomBadgeProps) {
   return (
     <Drawer>
-      <DrawerTrigger>
+      <DrawerTrigger className="cursor-pointer">
         <Badge variant={variant} className={`${color} ${textColor} h-6`}>
           {icon && <span className="mr-1">{icon}</span>}
           {text}
@@ -30,12 +31,17 @@ export default function CustomDrawerBadge({
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle>{text}</DrawerTitle>
-          <DrawerDescription>This action cannot be undone.</DrawerDescription>
         </DrawerHeader>
-        <div></div>
+        <div className="px-6 pb-6">
+          {drawerContent || (
+            <div className="text-center text-muted-foreground">
+              No additional information available.
+            </div>
+          )}
+        </div>
         <DrawerFooter>
-          <DrawerClose>
-            <Button>Close</Button>
+          <DrawerClose asChild>
+            <Button className="w-[20%] mx-auto cursor-pointer">Close</Button>
           </DrawerClose>
         </DrawerFooter>
       </DrawerContent>

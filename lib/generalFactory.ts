@@ -1,7 +1,7 @@
 import { BadgeElement } from "./generalTypes";
 
 export const developmentSkills: BadgeElement[] = [
-  { name: "Typescript", color: "bg-blue-500" },
+  { name: "TypeScript", color: "bg-blue-500" },
   { name: "React", color: "bg-cyan-500" },
   { name: "React Native", color: "bg-purple-500" },
   { name: "JavaScript", color: "bg-yellow-500" },

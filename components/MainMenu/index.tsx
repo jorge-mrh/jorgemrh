@@ -75,7 +75,7 @@ export default function MainMenu() {
                 <li>
                   <NavigationMenuLink asChild>
                     <Link
-                      href="/curriculum"
+                      href="/justgoup"
                       className="flex-row items-center gap-2"
                     >
                       Just Go Up

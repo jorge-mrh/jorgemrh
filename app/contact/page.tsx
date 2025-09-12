@@ -5,8 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 export default function Contact() {
   return (
     <div className="flex justify-center mt-15">
-      <div className="flex flex-col gap-10 w-full max-w-md">
-        <div className="grid gap-3 w-60">
+      <div className="flex flex-col w-full max-w-md">
+        <form className="flex flex-col gap-2">
           <Label htmlFor="username">Email</Label>
           <Input
             id="username"
@@ -14,11 +14,9 @@ export default function Contact() {
             placeholder="mail@example.com"
             required
           />
-        </div>
-        <div className="grid gap-3">
           <Label htmlFor="message">Your message</Label>
           <Textarea placeholder="Type your message here." id="message" />
-        </div>
+        </form>
       </div>
     </div>
   );

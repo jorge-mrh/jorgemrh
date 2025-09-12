@@ -88,7 +88,17 @@ export default function MainMenu() {
                         href="/justgoup"
                         className="flex-row items-center gap-2"
                       >
+                        <Download />
                         Just Go Up
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/notepod"
+                        className="flex-row items-center gap-2"
+                      >
+                        <Download />
+                        NotePod
                       </Link>
                     </NavigationMenuLink>
                   </li>

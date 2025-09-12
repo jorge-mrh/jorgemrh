@@ -12,7 +12,7 @@ import {
   interests,
 } from "@/lib/generalFactory";
 import { BadgeElement } from "@/lib/generalTypes";
-import { getSkillComponent } from "@/lib/skillComponentMapping";
+import { getSkillComponent } from "@/components/SkillComponents/skillComponentMapping";
 import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 

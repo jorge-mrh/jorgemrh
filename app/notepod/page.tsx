@@ -1,4 +1,6 @@
+"use client";
 import { AppSidebar } from "@/components/AppSidebar";
+import { Editor } from "@/components/Blocks/editor-x/editor";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -13,8 +15,43 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
+import { SerializedEditorState } from "lexical";
+import { useState } from "react";
 
-export default function Page() {
+export const initialValue = {
+  root: {
+    children: [
+      {
+        children: [
+          {
+            detail: 0,
+            format: 0,
+            mode: "normal",
+            style: "",
+            text: "Hello World 🚀",
+            type: "text",
+            version: 1,
+          },
+        ],
+        direction: "ltr",
+        format: "",
+        indent: 0,
+        type: "paragraph",
+        version: 1,
+      },
+    ],
+    direction: "ltr",
+    format: "",
+    indent: 0,
+    type: "root",
+    version: 1,
+  },
+} as unknown as SerializedEditorState;
+
+export default function NotePod() {
+  const [editorState, setEditorState] =
+    useState<SerializedEditorState>(initialValue);
+
   return (
     <SidebarProvider>
       <AppSidebar />
@@ -39,13 +76,11 @@ export default function Page() {
             </BreadcrumbList>
           </Breadcrumb>
         </header>
-        <div className="flex flex-1 flex-col gap-4 p-4">
-          <div className="grid auto-rows-min gap-4 md:grid-cols-3">
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-            <div className="bg-muted/50 aspect-video rounded-xl" />
-          </div>
-          <div className="bg-muted/50 min-h-[100vh] flex-1 rounded-xl md:min-h-min" />
+        <div className="flex p-4">
+          <Editor
+            editorSerializedState={editorState}
+            onSerializedChange={(value) => setEditorState(value)}
+          />
         </div>
       </SidebarInset>
     </SidebarProvider>

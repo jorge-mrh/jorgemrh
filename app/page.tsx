@@ -33,18 +33,15 @@ export default function Home() {
   };
 
   return (
-    <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-      {/* COLUMN 1 */}
-      <div>
-        <div className="flex flex-col gap-4 mb-10">
-          <TypographyH1 text={"Welcome"} />
-          <TypographyP
-            text={
-              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel massa sed felis egestas sagittis ut vel neque. Donec facilisis arcu ut ex dictum mollis. Nullam efficitur dictum nunc vitae porta."
-            }
-          />
-          <PersonalCard />
-        </div>
+    <div className="flex items-center flex-col gap-5">
+      <div className="flex flex-col items-start max-w-2xl w-full gap-5 md:px-10">
+        <TypographyH1 text={"Welcome"} />
+        <TypographyP
+          text={
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel massa sed felis egestas sagittis ut vel neque. Donec facilisis arcu ut ex dictum mollis. Nullam efficitur dictum nunc vitae porta."
+          }
+        />
+        <PersonalCard />
         <ToggleGroup
           variant={"outline"}
           type="single"
@@ -68,7 +65,7 @@ export default function Home() {
           text="Click on any of the items below to view more."
           textSize="text-xs"
         />
-        <div className="flex flex-wrap w-80 gap-2 mb-2">
+        <div className="flex flex-wrap gap-2 mb-2">
           {getCurrentSkills().map((skill, index) => (
             <CustomDrawerBadge
               key={index}
@@ -80,7 +77,7 @@ export default function Home() {
           ))}
         </div>
       </div>
-      {/* COLUMN 2 */}
+
       <div className="flex justify-center">
         <LoginForm className="max-w-120 min-w-90 mt-5" />
       </div>

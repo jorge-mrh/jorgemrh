@@ -1,5 +1,5 @@
-import TypographyH2 from "@/components/typography/H1";
-import { TypographyP } from "@/components/typography/P";
+import TypographyH2 from "@/components/typography/h1";
+import { TypographyP } from "@/components/typography/p";
 import skills from "@/public/skills.json";
 
 export default function TypeScriptDrawerContent() {

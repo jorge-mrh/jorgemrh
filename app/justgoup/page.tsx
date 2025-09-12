@@ -1,7 +1,7 @@
 import ProtectedRoute from "@/components/ProtectedRoute";
-import TypographyH1 from "@/components/typography/H1";
-import { TypographyH2 } from "@/components/typography/H2";
-import { TypographyP } from "@/components/typography/P";
+import TypographyH1 from "@/components/typography/h1";
+import { TypographyH2 } from "@/components/typography/h2";
+import { TypographyP } from "@/components/typography/p";
 
 export default function JustGoUp() {
   return (

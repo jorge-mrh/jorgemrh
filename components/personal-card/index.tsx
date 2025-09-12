@@ -1,6 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { TypographyP } from "../typography/P";
+import { TypographyP } from "../typography/p";
 import {
   Popover,
   PopoverContent,

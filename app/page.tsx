@@ -4,8 +4,8 @@ import CustomDrawerBadge from "@/components/custom-drawer-badge";
 import LoginForm from "@/components/login";
 import PersonalCard from "@/components/personal-card";
 import { getSkillComponent } from "@/components/skill-components/skillComponentMapping";
-import TypographyH1 from "@/components/typography/H1";
-import { TypographyP } from "@/components/typography/P";
+import TypographyH1 from "@/components/typography/h1";
+import { TypographyP } from "@/components/typography/p";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   designSkills,

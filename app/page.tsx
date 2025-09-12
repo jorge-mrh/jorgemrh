@@ -3,7 +3,7 @@
 import CustomDrawerBadge from "@/components/custom-drawer-badge";
 import LoginForm from "@/components/login";
 import PersonalCard from "@/components/personal-card";
-import { getSkillComponent } from "@/components/skill-components/skillComponentMapping";
+import { getSkillComponent } from "@/components/skill-components/skill-component-mapping";
 import TypographyH1 from "@/components/typography/h1";
 import { TypographyP } from "@/components/typography/p";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";

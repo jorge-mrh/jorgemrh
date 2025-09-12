@@ -1,4 +1,4 @@
-import ProtectedRoute from "@/components/ProtectedRoute";
+import ProtectedRoute from "@/components/protected-route";
 import TypographyH1 from "@/components/typography/h1";
 import { TypographyH2 } from "@/components/typography/h2";
 import { TypographyP } from "@/components/typography/p";

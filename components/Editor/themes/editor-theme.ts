@@ -1,6 +1,6 @@
-import { EditorThemeClasses } from "lexical"
+import { EditorThemeClasses } from "lexical";
 
-import "./editor-theme.css"
+import "./editor-theme.css";
 
 export const editorTheme: EditorThemeClasses = {
   ltr: "text-left",
@@ -117,7 +117,6 @@ export const editorTheme: EditorThemeClasses = {
   tableSelection: "EditorTheme__tableSelection bg-transparent",
   layoutItem: "border border-dashed px-4 py-2",
   layoutContainer: "grid gap-2.5 my-2.5 mx-0",
-  autocomplete: "text-muted-foreground",
   blockCursor: "",
   embedBlock: {
     base: "user-select-none",
@@ -127,4 +126,4 @@ export const editorTheme: EditorThemeClasses = {
   indent: "[--lexical-indent-base-value:40px]",
   mark: "",
   markOverlap: "",
-}
+};

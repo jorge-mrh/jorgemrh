@@ -14,7 +14,6 @@ import {
   TextNode,
 } from "lexical";
 
-import { AutocompleteNode } from "@/components/Editor/nodes/autocomplete-node";
 import { TweetNode } from "@/components/Editor/nodes/embeds/tweet-node";
 import { YouTubeNode } from "@/components/Editor/nodes/embeds/youtube-node";
 import { EmojiNode } from "@/components/Editor/nodes/emoji-node";
@@ -50,5 +49,4 @@ export const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =
     AutoLinkNode,
     TweetNode,
     YouTubeNode,
-    AutocompleteNode,
   ];

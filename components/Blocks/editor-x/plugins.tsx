@@ -52,7 +52,6 @@ import { MarkdownTogglePlugin } from "@/components/Editor/plugins/actions/markdo
 import { MaxLengthPlugin } from "@/components/Editor/plugins/actions/max-length-plugin";
 import { ShareContentPlugin } from "@/components/Editor/plugins/actions/share-content-plugin";
 import { TreeViewPlugin } from "@/components/Editor/plugins/actions/tree-view-plugin";
-import { AutocompletePlugin } from "@/components/Editor/plugins/autocomplete-plugin";
 import { CodeActionMenuPlugin } from "@/components/Editor/plugins/code-action-menu-plugin";
 import { CodeHighlightPlugin } from "@/components/Editor/plugins/code-highlight-plugin";
 import { ComponentPickerMenuPlugin } from "@/components/Editor/plugins/component-picker-menu-plugin";
@@ -92,7 +91,6 @@ import { InsertColumnsLayout } from "@/components/Editor/plugins/toolbar/block-i
 import { InsertEmbeds } from "@/components/Editor/plugins/toolbar/block-insert/insert-embeds";
 import { InsertImage } from "@/components/Editor/plugins/toolbar/block-insert/insert-image";
 import { InsertTable } from "@/components/Editor/plugins/toolbar/block-insert/insert-table";
-import { TypingPerfPlugin } from "@/components/Editor/plugins/typing-pref-plugin";
 import { EMOJI } from "@/components/Editor/transformers/markdown-emoji-transformer";
 import { HR } from "@/components/Editor/transformers/markdown-hr-transformer";
 import { IMAGE } from "@/components/Editor/transformers/markdown-image-transformer";
@@ -175,7 +173,7 @@ export function Plugins({}) {
               <div className="" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block h-[calc(100vh-570px)] min-h-full overflow-auto px-8 py-4 focus:outline-none"
+                  className="ContentEditable__root relative block h-[100vh] overflow-auto px-8 py-4 focus:outline-none"
                 />
               </div>
             </div>
@@ -221,9 +219,7 @@ export function Plugins({}) {
             ...TEXT_MATCH_TRANSFORMERS,
           ]}
         />
-        <TypingPerfPlugin />
         <TabFocusPlugin />
-        <AutocompletePlugin />
         <AutoLinkPlugin matchers={[]} />
         <LinkPlugin />
 

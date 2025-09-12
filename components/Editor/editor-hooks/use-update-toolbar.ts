@@ -26,7 +26,6 @@ export function useUpdateToolbarHandler(
       },
       COMMAND_PRIORITY_CRITICAL
     );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [editor, callback]);
 
   useEffect(() => {

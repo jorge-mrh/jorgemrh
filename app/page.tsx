@@ -13,11 +13,24 @@ import {
 } from "@/lib/generalFactory";
 import { BadgeElement } from "@/lib/generalTypes";
 import { getSkillComponent } from "@/lib/skillComponentMapping";
+import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 
 export default function Home() {
   const [selectedCategory, setSelectedCategory] =
     useState<string>("Development");
+
+  const user = useAuthStore((state) => state.user);
+  const profile = useAuthStore((state) => state.profile);
+
+  const loading = useAuthStore((state) => state.loading);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  console.log("User:", user);
+  console.log("Profile:", profile);
 
   const getCurrentSkills = (): BadgeElement[] => {
     switch (selectedCategory) {
@@ -78,9 +91,11 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="flex justify-center">
-        <LoginForm className="max-w-120 min-w-90 mt-5" />
-      </div>
+      {!user && (
+        <div className="flex justify-center">
+          <LoginForm className="max-w-120 min-w-90 mt-5" />
+        </div>
+      )}
     </div>
   );
 }

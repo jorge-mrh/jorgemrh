@@ -1,5 +1,8 @@
-import { Geist, Geist_Mono } from "next/font/google";
+"use client";
 import "./globals.css";
+import { useEffect } from "react";
+import { useAuthStore } from "@/stores/authStore";
+import { Geist, Geist_Mono } from "next/font/google";
 import MainMenu from "@/components/MainMenu";
 
 const geistSans = Geist({
@@ -17,6 +20,9 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  useEffect(() => {
+    useAuthStore.getState().initialize();
+  }, []);
   return (
     <html lang="en">
       <body

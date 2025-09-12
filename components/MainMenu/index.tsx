@@ -1,3 +1,5 @@
+"use client";
+
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -8,6 +10,7 @@ import {
 } from "@/components/ui/navigation-menu";
 import { Download, SquareMousePointer, View } from "lucide-react";
 import Link from "next/link";
+import { useAuthStore } from "@/stores/authStore";
 
 function getCVFileName() {
   const currentYear = new Date().getFullYear();
@@ -15,6 +18,12 @@ function getCVFileName() {
 }
 
 export default function MainMenu() {
+  const user = useAuthStore((state) => state.user);
+  const loading = useAuthStore((state) => state.loading);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   return (
     <div className="p-2">
       <NavigationMenu viewport={false}>
@@ -68,23 +77,25 @@ export default function MainMenu() {
               <Link href="/contact">contact</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>fun stuff</NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full mt-1 ">
-              <ul className="w-30">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href="/justgoup"
-                      className="flex-row items-center gap-2"
-                    >
-                      Just Go Up
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+          {user && (
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>fun stuff</NavigationMenuTrigger>
+              <NavigationMenuContent className="absolute top-full mt-1 ">
+                <ul className="w-30">
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/justgoup"
+                        className="flex-row items-center gap-2"
+                      >
+                        Just Go Up
+                      </Link>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          )}
         </NavigationMenuList>
       </NavigationMenu>
     </div>

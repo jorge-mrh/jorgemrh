@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { TypographyH2 } from "../typography/h2";
-import { TypographyP } from "../typography/p";
+import { TypographyH2 } from "@/components/typography/h2";
+import { TypographyP } from "@/components/typography/p";
 import { useState } from "react";
 import { useAuthStore } from "@/stores/authStore";
 

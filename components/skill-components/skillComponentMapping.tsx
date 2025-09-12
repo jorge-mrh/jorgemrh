@@ -1,7 +1,7 @@
 import React from "react";
-import TypeScriptDrawerContent from "@/components/SkillComponents/TypeScriptDrawerContent";
-import ReactDrawerContent from "@/components/SkillComponents/ReactDrawerContent";
-import ReactNativeDrawerContent from "@/components/SkillComponents/ReactNativeDrawerContent";
+import TypeScriptDrawerContent from "./TypeScriptDrawerContent";
+import ReactDrawerContent from "./ReactDrawerContent";
+import ReactNativeDrawerContent from "./ReactNativeDrawerContent";
 
 export const getSkillComponent = (skillName: string): React.ReactNode => {
   const componentMap: Record<string, React.ReactNode> = {

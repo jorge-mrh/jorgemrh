@@ -40,12 +40,12 @@ import {
   $createLayoutContainerNode,
   $isLayoutContainerNode,
   LayoutContainerNode,
-} from "@/components/Editor/nodes/layout-container-node";
+} from "@/components/editor/nodes/layout-container-node";
 import {
   $createLayoutItemNode,
   $isLayoutItemNode,
   LayoutItemNode,
-} from "@/components/Editor/nodes/layout-item-node";
+} from "@/components/editor/nodes/layout-item-node";
 import { Button } from "@/components/ui/button";
 import {
   Select,

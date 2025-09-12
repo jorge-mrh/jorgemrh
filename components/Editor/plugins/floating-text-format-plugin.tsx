@@ -35,9 +35,9 @@ import {
 } from "lucide-react";
 import { createPortal } from "react-dom";
 
-import { getDOMRangeRect } from "@/components/Editor/utils/get-dom-range-rect";
-import { getSelectedNode } from "@/components/Editor/utils/get-selected-node";
-import { setFloatingElemPosition } from "@/components/Editor/utils/set-floating-elem-position";
+import { getDOMRangeRect } from "@/components/editor/utils/get-dom-range-rect";
+import { getSelectedNode } from "@/components/editor/utils/get-selected-node";
+import { setFloatingElemPosition } from "@/components/editor/utils/set-floating-elem-position";
 import { Separator } from "@/components/ui/separator";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 

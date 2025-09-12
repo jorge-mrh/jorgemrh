@@ -3,7 +3,7 @@ import { $setBlocksType } from "@lexical/selection";
 import { $getSelection, $isRangeSelection } from "lexical";
 import { QuoteIcon } from "lucide-react";
 
-import { ComponentPickerOption } from "@/components/Editor/plugins/picker/component-picker-option";
+import { ComponentPickerOption } from "@/components/editor/plugins/picker/component-picker-option";
 
 export function QuotePickerPlugin() {
   return new ComponentPickerOption("Quote", {

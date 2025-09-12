@@ -16,8 +16,8 @@ import {
   BaseSelection,
 } from "lexical";
 
-import { useToolbarContext } from "@/components/Editor/context/toolbar-context";
-import { useUpdateToolbarHandler } from "@/components/Editor/editor-hooks/use-update-toolbar";
+import { useToolbarContext } from "@/components/editor/context/toolbar-context";
+import { useUpdateToolbarHandler } from "@/components/editor/editor-hooks/use-update-toolbar";
 import {
   Select,
   SelectContent,

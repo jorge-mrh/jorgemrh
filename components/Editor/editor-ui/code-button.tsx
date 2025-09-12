@@ -9,7 +9,7 @@ import {
 } from "lexical";
 import { CircleCheckIcon, CopyIcon } from "lucide-react";
 
-import { useDebounce } from "@/components/Editor/editor-hooks/use-debounce";
+import { useDebounce } from "@/components/editor/editor-hooks/use-debounce";
 
 interface Props {
   editor: LexicalEditor;

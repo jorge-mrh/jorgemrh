@@ -3,7 +3,7 @@
 import { INSERT_HORIZONTAL_RULE_COMMAND } from "@lexical/react/LexicalHorizontalRuleNode";
 import { ScissorsIcon } from "lucide-react";
 
-import { useToolbarContext } from "@/components/Editor/context/toolbar-context";
+import { useToolbarContext } from "@/components/editor/context/toolbar-context";
 import { SelectItem } from "@/components/ui/select";
 
 export function InsertHorizontalRule() {

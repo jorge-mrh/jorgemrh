@@ -1,7 +1,7 @@
 import * as React from "react";
 import { GalleryVerticalEnd, Minus, Plus } from "lucide-react";
 
-import { SearchForm } from "@/components/SearchForm";
+import { SearchForm } from "@/components/search-form";
 import {
   Collapsible,
   CollapsibleContent,

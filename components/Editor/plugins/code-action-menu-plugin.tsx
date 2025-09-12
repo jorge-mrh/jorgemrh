@@ -18,8 +18,8 @@ import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext
 import { $getNearestNodeFromDOMNode, isHTMLElement } from "lexical";
 import { createPortal } from "react-dom";
 
-import { useDebounce } from "@/components/Editor/editor-hooks/use-debounce";
-import { CopyButton } from "@/components/Editor/editor-ui/code-button";
+import { useDebounce } from "@/components/editor/editor-hooks/use-debounce";
+import { CopyButton } from "@/components/editor/editor-ui/code-button";
 
 const CODE_PADDING = 8;
 

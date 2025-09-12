@@ -1,6 +1,6 @@
 "use client";
-import { AppSidebar } from "@/components/AppSidebar";
-import { Editor } from "@/components/Blocks/editor-x/editor";
+import { AppSidebar } from "@/components/app-sidebar";
+import { Editor } from "@/components/blocks/editor-x/editor";
 import {
   Breadcrumb,
   BreadcrumbItem,

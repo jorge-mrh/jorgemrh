@@ -14,14 +14,13 @@ import {
   TextNode,
 } from "lexical";
 
-import { TweetNode } from "@/components/Editor/nodes/embeds/tweet-node";
-import { YouTubeNode } from "@/components/Editor/nodes/embeds/youtube-node";
-import { EmojiNode } from "@/components/Editor/nodes/emoji-node";
-import { ImageNode } from "@/components/Editor/nodes/image-node";
-import { KeywordNode } from "@/components/Editor/nodes/keyword-node";
-import { LayoutContainerNode } from "@/components/Editor/nodes/layout-container-node";
-import { LayoutItemNode } from "@/components/Editor/nodes/layout-item-node";
-import { MentionNode } from "@/components/Editor/nodes/mention-node";
+import { YouTubeNode } from "@/components/editor/nodes/embeds/youtube-node";
+import { EmojiNode } from "@/components/editor/nodes/emoji-node";
+import { ImageNode } from "@/components/editor/nodes/image-node";
+import { KeywordNode } from "@/components/editor/nodes/keyword-node";
+import { LayoutContainerNode } from "@/components/editor/nodes/layout-container-node";
+import { LayoutItemNode } from "@/components/editor/nodes/layout-item-node";
+import { MentionNode } from "@/components/editor/nodes/mention-node";
 
 export const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =
   [
@@ -47,6 +46,5 @@ export const nodes: ReadonlyArray<Klass<LexicalNode> | LexicalNodeReplacement> =
     LayoutContainerNode,
     LayoutItemNode,
     AutoLinkNode,
-    TweetNode,
     YouTubeNode,
   ];

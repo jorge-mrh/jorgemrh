@@ -13,7 +13,7 @@ import { DRAG_DROP_PASTE } from "@lexical/rich-text";
 import { isMimeType, mediaFileReader } from "@lexical/utils";
 import { COMMAND_PRIORITY_LOW } from "lexical";
 
-import { INSERT_IMAGE_COMMAND } from "@/components/Editor/plugins/images-plugin";
+import { INSERT_IMAGE_COMMAND } from "@/components/editor/plugins/images-plugin";
 
 const ACCEPTABLE_IMAGE_TYPES = [
   "image/",

@@ -14,14 +14,13 @@ import { useBasicTypeaheadTriggerMatch } from "@lexical/react/LexicalTypeaheadMe
 import { TextNode } from "lexical";
 import { createPortal } from "react-dom";
 
-import { useEditorModal } from "@/components/Editor/editor-hooks/use-modal";
+import { useEditorModal } from "@/components/editor/editor-hooks/use-modal";
 import {
   Command,
   CommandGroup,
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
-
 import { ComponentPickerOption } from "./picker/component-picker-option";
 
 const LexicalTypeaheadMenuPlugin = dynamic(

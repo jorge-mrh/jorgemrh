@@ -1,5 +1,5 @@
-import TypographyH2 from "@/components/Typography/H1";
-import { TypographyP } from "@/components/Typography/P";
+import TypographyH2 from "@/components/typography/H1";
+import { TypographyP } from "@/components/typography/P";
 import skills from "@/public/skills.json";
 
 export default function ReactDrawerContent() {

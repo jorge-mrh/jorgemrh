@@ -6,7 +6,7 @@ import {
 } from "lexical";
 import { TextIcon } from "lucide-react";
 
-import { ComponentPickerOption } from "@/components/Editor/plugins/picker/component-picker-option";
+import { ComponentPickerOption } from "@/components/editor/plugins/picker/component-picker-option";
 
 export function ParagraphPickerPlugin() {
   return new ComponentPickerOption("Paragraph", {

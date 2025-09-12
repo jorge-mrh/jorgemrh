@@ -1,10 +1,11 @@
 "use client";
 
-import CustomDrawerBadge from "@/components/CustomDrawerBadge";
-import LoginForm from "@/components/Login";
-import PersonalCard from "@/components/PersonalCard";
-import TypographyH1 from "@/components/Typography/H1";
-import { TypographyP } from "@/components/Typography/P";
+import CustomDrawerBadge from "@/components/custom-drawer-badge";
+import LoginForm from "@/components/login";
+import PersonalCard from "@/components/personal-card";
+import { getSkillComponent } from "@/components/skill-components/skillComponentMapping";
+import TypographyH1 from "@/components/typography/H1";
+import { TypographyP } from "@/components/typography/P";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   designSkills,
@@ -12,7 +13,6 @@ import {
   interests,
 } from "@/lib/generalFactory";
 import { BadgeElement } from "@/lib/generalTypes";
-import { getSkillComponent } from "@/components/SkillComponents/skillComponentMapping";
 import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 

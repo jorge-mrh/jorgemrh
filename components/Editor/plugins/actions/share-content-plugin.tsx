@@ -14,7 +14,7 @@ import { toast } from "sonner";
 import {
   docFromHash,
   docToHash,
-} from "@/components/Editor/utils/doc-serialization";
+} from "@/components/editor/utils/doc-serialization";
 import { Button } from "@/components/ui/button";
 import {
   Tooltip,

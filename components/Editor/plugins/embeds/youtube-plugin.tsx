@@ -19,7 +19,7 @@ import {
 import {
   $createYouTubeNode,
   YouTubeNode,
-} from "@/components/Editor/nodes/embeds/youtube-node";
+} from "@/components/editor/nodes/embeds/youtube-node";
 
 export const INSERT_YOUTUBE_COMMAND: LexicalCommand<string> = createCommand(
   "INSERT_YOUTUBE_COMMAND"

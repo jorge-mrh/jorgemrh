@@ -22,10 +22,9 @@ import {
 } from "@lexical/table";
 import { $isParagraphNode, $isTextNode, LexicalNode } from "lexical";
 
-import { EMOJI } from "@/components/Editor/transformers/markdown-emoji-transformer";
-import { HR } from "@/components/Editor/transformers/markdown-hr-transformer";
-import { IMAGE } from "@/components/Editor/transformers/markdown-image-transformer";
-import { TWEET } from "@/components/Editor/transformers/markdown-tweet-transformer";
+import { EMOJI } from "@/components/editor/transformers/markdown-emoji-transformer";
+import { HR } from "@/components/editor/transformers/markdown-hr-transformer";
+import { IMAGE } from "@/components/editor/transformers/markdown-image-transformer";
 
 // Very primitive table setup
 const TABLE_ROW_REG_EXP = /^(?:\|)(.+)(?:\|)\s?$/;
@@ -35,7 +34,6 @@ const OTHER_MARKDOWN_TRANSFORMERS = [
   HR,
   IMAGE,
   EMOJI,
-  TWEET,
   CHECK_LIST,
   ...ELEMENT_TRANSFORMERS,
   ...MULTILINE_ELEMENT_TRANSFORMERS,

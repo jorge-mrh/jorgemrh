@@ -12,7 +12,7 @@ import {
 } from "lexical";
 import { RedoIcon, UndoIcon } from "lucide-react";
 
-import { useToolbarContext } from "@/components/Editor/context/toolbar-context";
+import { useToolbarContext } from "@/components/editor/context/toolbar-context";
 import { Button } from "@/components/ui/button";
 
 const IS_APPLE = true;

@@ -16,7 +16,7 @@ import { createPortal } from "react-dom";
 import {
   $createEmojiNode,
   EmojiNode,
-} from "@/components/Editor/nodes/emoji-node";
+} from "@/components/editor/nodes/emoji-node";
 
 const emojis: Map<string, [string, string]> = new Map([
   [":)", ["emoji happysmile", "🙂"]],

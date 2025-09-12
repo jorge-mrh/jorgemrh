@@ -20,7 +20,7 @@ import { TextNode } from "lexical";
 import { CircleUserRoundIcon } from "lucide-react";
 import { createPortal } from "react-dom";
 
-import { $createMentionNode } from "@/components/Editor/nodes/mention-node";
+import { $createMentionNode } from "@/components/editor/nodes/mention-node";
 import {
   Command,
   CommandGroup,

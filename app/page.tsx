@@ -21,16 +21,6 @@ export default function Home() {
     useState<string>("Development");
 
   const user = useAuthStore((state) => state.user);
-  const profile = useAuthStore((state) => state.profile);
-
-  const loading = useAuthStore((state) => state.loading);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log("User:", user);
-  console.log("Profile:", profile);
 
   const getCurrentSkills = (): BadgeElement[] => {
     switch (selectedCategory) {

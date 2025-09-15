@@ -108,12 +108,14 @@ export default function NotePod() {
       .eq("id", id)
       .single();
 
-    console.log("Selected Doc Data:", data);
-    console.log("Selected Doc Error:", error);
-
     if (!error && data) {
       setEditorState(data.content as SerializedEditorState);
     }
+  };
+
+  const handleNewDocument = () => {
+    setCurrentDocId(null);
+    setEditorState(initialValue);
   };
 
   return (
@@ -126,7 +128,16 @@ export default function NotePod() {
             orientation="vertical"
             className="mr-2 data-[orientation=vertical]:h-4"
           />
-          <DocumentSaveDialog onSave={handleSaveWithName} />
+          <button
+            onClick={handleNewDocument}
+            className="rounded border px-3 py-1 hover:bg-gray-800"
+          >
+            New Document
+          </button>
+          <DocumentSaveDialog
+            currentName={docs.find((d) => d.id === currentDocId)?.name}
+            onSave={handleSaveWithName}
+          />
         </header>
         <div className="flex p-4">
           <Editor

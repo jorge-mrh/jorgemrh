@@ -100,7 +100,7 @@ import { LinkPlugin } from "@lexical/react/LexicalLinkPlugin";
 import { ContentEditable } from "@/components/editor/editor-ui/content-editable";
 
 const placeholder = "Press / for commands...";
-const maxLength = 500;
+const maxLength = 20000;
 
 export function Plugins({}) {
   const [floatingAnchorElem, setFloatingAnchorElem] =
@@ -171,7 +171,7 @@ export function Plugins({}) {
               <div className="" ref={onRef}>
                 <ContentEditable
                   placeholder={placeholder}
-                  className="ContentEditable__root relative block h-[100vh] overflow-auto px-8 py-4 focus:outline-none"
+                  className="ContentEditable__root relative block h-[calc(100vh-280px)] overflow-auto no-scrollbar px-8 py-4 focus:outline-none"
                 />
               </div>
             </div>

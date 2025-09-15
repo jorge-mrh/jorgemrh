@@ -6,35 +6,46 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function DocumentSaveDialog({
+  currentName,
   onSave,
 }: {
+  currentName?: string;
   onSave: (name: string) => void;
 }) {
   const [open, setOpen] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState(currentName || "");
 
   const handleSaveClick = () => {
     if (name.trim()) {
       onSave(name.trim());
       setOpen(false);
-      setName("");
     }
   };
+
+  useEffect(() => {
+    setName(currentName || "");
+  }, [currentName]);
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <button className="ml-auto rounded bg-blue-600 px-4 py-1 text-white hover:bg-blue-700">
-          Save
+        <button className="rounded border px-3 py-1 hover:bg-gray-800">
+          {currentName ? "Update Document" : "Save as..."}
         </button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Save Document</DialogTitle>
-          <DialogDescription>Enter a name for your document</DialogDescription>
+          <DialogTitle>
+            {currentName ? "Update Document" : "Save Document"}
+          </DialogTitle>
+          <DialogDescription>
+            {currentName
+              ? "Change the name of your document and save."
+              : "Enter a name for your new document."}
+          </DialogDescription>
         </DialogHeader>
         <input
           type="text"
@@ -54,7 +65,7 @@ export default function DocumentSaveDialog({
             onClick={handleSaveClick}
             className="px-3 py-1 rounded bg-blue-600 text-white"
           >
-            Save
+            {currentName ? "Update" : "Save"}
           </button>
         </div>
       </DialogContent>

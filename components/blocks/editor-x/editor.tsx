@@ -25,21 +25,20 @@ function LoadSerializedStatePlugin({
     if (!state) return;
 
     try {
-      const parsed = typeof state === "string" ? JSON.parse(state) : state;
+      const incoming = state;
 
-      const current = editor.getEditorState().toJSON();
-      const incoming = parsed;
-
-      // prevent unnecessary resets
+      const current = editor.getEditorState().toJSON?.();
       if (JSON.stringify(current) !== JSON.stringify(incoming)) {
         const newState = editor.parseEditorState(incoming);
-        editor.setEditorState(newState);
+
+        setTimeout(() => {
+          editor.setEditorState(newState);
+        }, 0);
       }
     } catch (err) {
       console.error("Failed to load serialized editor state", err);
     }
-  }, [state, editor]);
-
+  }, [state]);
   return null;
 }
 

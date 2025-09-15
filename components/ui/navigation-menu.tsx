@@ -19,7 +19,7 @@ function NavigationMenu({
       data-slot="navigation-menu"
       data-viewport={viewport}
       className={cn(
-        "group/navigation-menu absolute flex top-1 left-1 max-w-max bg-background z-99 flex-1 rounded-xl p-2 shadow",
+        "group/navigation-menu absolute flex top-1 left-1 w-full bg-background z-99 flex-1 justify-center p-2 shadow",
         className
       )}
       {...props}

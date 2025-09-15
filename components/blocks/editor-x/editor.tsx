@@ -11,6 +11,37 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { editorTheme } from "@/components/editor/themes/editor-theme";
 import { nodes } from "./nodes";
 import { Plugins } from "./plugins";
+import { useEffect } from "react";
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+
+function LoadSerializedStatePlugin({
+  state,
+}: {
+  state?: SerializedEditorState | string | null;
+}) {
+  const [editor] = useLexicalComposerContext();
+
+  useEffect(() => {
+    if (!state) return;
+
+    try {
+      const parsed = typeof state === "string" ? JSON.parse(state) : state;
+
+      const current = editor.getEditorState().toJSON();
+      const incoming = parsed;
+
+      // prevent unnecessary resets
+      if (JSON.stringify(current) !== JSON.stringify(incoming)) {
+        const newState = editor.parseEditorState(incoming);
+        editor.setEditorState(newState);
+      }
+    } catch (err) {
+      console.error("Failed to load serialized editor state", err);
+    }
+  }, [state, editor]);
+
+  return null;
+}
 
 const editorConfig: InitialConfigType = {
   namespace: "Editor",
@@ -38,13 +69,14 @@ export function Editor({
         initialConfig={{
           ...editorConfig,
           ...(editorState ? { editorState } : {}),
-          ...(editorSerializedState
-            ? { editorState: JSON.stringify(editorSerializedState) }
-            : {}),
         }}
       >
         <TooltipProvider>
           <Plugins />
+
+          {editorSerializedState ? (
+            <LoadSerializedStatePlugin state={editorSerializedState} />
+          ) : null}
 
           <OnChangePlugin
             ignoreSelectionChange={true}

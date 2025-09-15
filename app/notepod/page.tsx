@@ -1,14 +1,7 @@
 "use client";
 import { AppSidebar } from "@/components/app-sidebar";
 import { Editor } from "@/components/blocks/editor-x/editor";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import DocumentSaveDialog from "@/components/document-save-dialog";
 import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
@@ -72,15 +65,16 @@ export default function NotePod() {
     loadDocs();
   }, [user?.id]);
 
-  const handleSave = async () => {
+  const handleSaveWithName = async (name: string) => {
     if (!user?.id) return;
 
     if (currentDocId) {
-      // update
+      // update existing
       const { error } = await supabase
         .from("documents")
         .update({
           content: editorState,
+          name,
           updated_at: new Date().toISOString(),
         })
         .eq("id", currentDocId);
@@ -93,7 +87,7 @@ export default function NotePod() {
         .insert([
           {
             user_id: user.id,
-            name: "Untitled Document",
+            name,
             content: editorState,
           },
         ])
@@ -118,7 +112,6 @@ export default function NotePod() {
     console.log("Selected Doc Error:", error);
 
     if (!error && data) {
-      //setCurrentDocName(data.name);
       setEditorState(data.content as SerializedEditorState);
     }
   };
@@ -133,25 +126,7 @@ export default function NotePod() {
             orientation="vertical"
             className="mr-2 data-[orientation=vertical]:h-4"
           />
-          {/* <Breadcrumb>
-            <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">
-                  Building Your Application
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb> */}
-          <button
-            onClick={handleSave}
-            className="ml-auto rounded bg-blue-600 px-4 py-1 text-white hover:bg-blue-700"
-          >
-            Save
-          </button>
+          <DocumentSaveDialog onSave={handleSaveWithName} />
         </header>
         <div className="flex p-4">
           <Editor

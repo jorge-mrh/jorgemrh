@@ -1,10 +1,11 @@
 "use client";
 
-import CustomDrawerBadge from "@/components/CustomDrawerBadge";
-import LoginForm from "@/components/Login";
-import PersonalCard from "@/components/PersonalCard";
-import TypographyH1 from "@/components/Typography/H1";
-import { TypographyP } from "@/components/Typography/P";
+import CustomDrawerBadge from "@/components/custom-drawer-badge";
+import LoginForm from "@/components/login";
+import PersonalCard from "@/components/personal-card";
+import { getSkillComponent } from "@/components/skill-components/skill-component-mapping";
+import TypographyH1 from "@/components/typography/h1";
+import { TypographyP } from "@/components/typography/p";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import {
   designSkills,
@@ -12,7 +13,6 @@ import {
   interests,
 } from "@/lib/generalFactory";
 import { BadgeElement } from "@/lib/generalTypes";
-import { getSkillComponent } from "@/lib/skillComponentMapping";
 import { useAuthStore } from "@/stores/authStore";
 import { useState } from "react";
 
@@ -21,16 +21,6 @@ export default function Home() {
     useState<string>("Development");
 
   const user = useAuthStore((state) => state.user);
-  const profile = useAuthStore((state) => state.profile);
-
-  const loading = useAuthStore((state) => state.loading);
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  console.log("User:", user);
-  console.log("Profile:", profile);
 
   const getCurrentSkills = (): BadgeElement[] => {
     switch (selectedCategory) {

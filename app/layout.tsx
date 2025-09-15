@@ -28,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
       >
-        <nav className="flex justify-start md:justify-center">
+        <nav className="flex justify-start pt-7 md:justify-center">
           <MainMenu></MainMenu>
         </nav>
 

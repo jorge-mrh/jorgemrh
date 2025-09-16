@@ -8,10 +8,14 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/components/ui/sidebar";
-import supabase from "@/lib/supabase";
+import { useCreateDocument } from "@/hooks/data/use-create-new-document";
+import { useFetchDocument } from "@/hooks/data/use-fetch-document";
+import { useFetchUserDocuments } from "@/hooks/data/use-fetch-user-documents";
+import { useUpdateDocument } from "@/hooks/data/use-update-document";
 import { useAuthStore } from "@/stores/authStore";
 import { SerializedEditorState } from "lexical";
 import { useEffect, useState } from "react";
+import { useDeleteDocument } from "@/hooks/data/use-delete-document";
 
 export const initialValue = {
   root: {
@@ -47,80 +51,62 @@ export default function NotePod() {
   const user = useAuthStore((state) => state.user);
   const [editorState, setEditorState] =
     useState<SerializedEditorState>(initialValue);
-  const [docs, setDocs] = useState<Array<{ id: string; name: string }>>([]);
-  const [currentDocId, setCurrentDocId] = useState<string | null>(null);
+  const [currentDocId, setCurrentDocId] = useState<string | undefined>(
+    undefined
+  );
 
-  useEffect(() => {
-    if (!user?.id) return;
+  const { data: docs } = useFetchUserDocuments({ user_id: user?.id });
+  const { data: doc } = useFetchDocument(currentDocId ?? undefined);
+  const createDoc = useCreateDocument(user?.id, editorState);
+  const updateDoc = useUpdateDocument(currentDocId, editorState);
+  const deleteDoc = useDeleteDocument(user?.id);
 
-    const loadDocs = async () => {
-      const { data, error } = await supabase
-        .from("documents")
-        .select("id, name")
-        .eq("user_id", user.id);
-
-      if (!error && data) setDocs(data);
-    };
-
-    loadDocs();
-  }, [user?.id]);
-
-  const handleSaveWithName = async (name: string) => {
-    if (!user?.id) return;
-
+  const handleSaveWithName = (name: string) => {
     if (currentDocId) {
-      // update existing
-      const { error } = await supabase
-        .from("documents")
-        .update({
-          content: editorState,
-          name,
-          updated_at: new Date().toISOString(),
-        })
-        .eq("id", currentDocId);
-
-      if (error) console.error("Update failed:", error);
+      updateDoc.mutate(name, {
+        onError: (err) => console.error("Update failed:", err),
+      });
     } else {
-      // create new
-      const { data, error } = await supabase
-        .from("documents")
-        .insert([
-          {
-            user_id: user.id,
-            name,
-            content: editorState,
-          },
-        ])
-        .select("id")
-        .single();
-
-      if (!error && data) setCurrentDocId(data.id);
-      if (error) console.error("Insert failed:", error);
+      createDoc.mutate(name, {
+        onSuccess: (data) => setCurrentDocId(data.id),
+        onError: (err) => console.error("Insert failed:", err),
+      });
     }
   };
 
-  const handleSelectDoc = async (id: string) => {
+  const handleSelectDoc = (id: string) => {
     setCurrentDocId(id);
-
-    const { data, error } = await supabase
-      .from("documents")
-      .select("name, content")
-      .eq("id", id)
-      .single();
-
-    if (!error && data) {
-      setEditorState(data.content as SerializedEditorState);
-    }
   };
 
   const handleNewDocument = () => {
-    setCurrentDocId(null);
+    setCurrentDocId(undefined);
     setEditorState(initialValue);
   };
 
+  const handleDeleteDoc = (id: string) => {
+    deleteDoc.mutate(id, {
+      onError: (err) => console.error("Delete failed:", err),
+      onSuccess: () => {
+        if (currentDocId === id) {
+          handleNewDocument();
+        }
+      },
+    });
+  };
+
+  useEffect(() => {
+    if (doc?.content) {
+      setEditorState(doc.content as SerializedEditorState);
+    }
+  }, [doc]);
+
   return (
     <SidebarProvider>
-      <AppSidebar documents={docs} onSelectDoc={handleSelectDoc} />
+      <AppSidebar
+        documents={docs || []}
+        onSelectDoc={handleSelectDoc}
+        onDeleteDoc={handleDeleteDoc}
+      />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
@@ -135,7 +121,7 @@ export default function NotePod() {
             New Document
           </button>
           <DocumentSaveDialog
-            currentName={docs.find((d) => d.id === currentDocId)?.name}
+            currentName={docs?.find((d) => d.id === currentDocId)?.name}
             onSave={handleSaveWithName}
           />
         </header>

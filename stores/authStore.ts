@@ -3,11 +3,9 @@ import supabase from "@/lib/supabase";
 
 interface AuthState {
   user: any | null;
-  profile: any | null;
   loading: boolean;
   signIn: (email: string, password: string) => Promise<{ error: any }>;
   signOut: () => Promise<void>;
-  fetchProfile: () => Promise<void>;
   initialize: () => Promise<void>;
 }
 
@@ -23,22 +21,13 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     });
     if (!error && data.user) {
       set({ user: data.user });
-      await get().fetchProfile();
     }
     return { error };
   },
 
   signOut: async () => {
     await supabase.auth.signOut();
-    set({ user: null, profile: null });
-  },
-
-  fetchProfile: async () => {
-    const { data } = await supabase
-      .from("profiles")
-      .select("*, roles(name)")
-      .single();
-    set({ profile: data });
+    set({ user: null });
   },
   initialize: async () => {
     const {
@@ -46,7 +35,6 @@ export const useAuthStore = create<AuthState>((set, get) => ({
     } = await supabase.auth.getSession();
     if (session?.user) {
       set({ user: session.user });
-      await get().fetchProfile();
     }
     set({ loading: false });
   },

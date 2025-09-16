@@ -1,3 +1,4 @@
+"use client";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
@@ -14,14 +15,17 @@ import { TypographyP } from "@/components/typography/p";
 import { useState } from "react";
 import { useAuthStore } from "@/stores/authStore";
 
-export default function LoginForm({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export default function LoginForm() {
+  const user = useAuthStore((state) => state.user);
+  const loading = useAuthStore((state) => state.loading);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const signIn = useAuthStore((state) => state.signIn);
+
+  if (user || loading) {
+    return null; // already logged in, hide the form
+  }
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -32,14 +36,14 @@ export default function LoginForm({
   };
 
   return (
-    <div className={cn("flex flex-col gap-6", className)} {...props}>
+    <div className="flex flex-col gap-6 w-sm md:w-md">
       <Card>
         <CardHeader>
           <CardTitle>
             <TypographyH2 text={"Were you provided login credentials?"} />
           </CardTitle>
           <CardDescription>
-            <div className="flex row-auto gap-2">
+            <div>
               <TypographyP
                 text={"Login bellow to get access to extra content."}
               />

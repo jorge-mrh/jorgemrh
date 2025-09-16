@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useAuthStore } from "@/stores/authStore";
 import { Geist, Geist_Mono } from "next/font/google";
 import MainMenu from "@/components/main-menu";
+import Providers from "@/provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,13 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-hidden`}
       >
-        <nav className="flex justify-start pt-7 md:justify-center">
+        <nav className="flex pt-7 justify-center">
           <MainMenu></MainMenu>
         </nav>
 
-        <main className="font-sans p-5">{children}</main>
+        <main className="font-sans p-5">
+          <Providers>{children}</Providers>
+        </main>
       </body>
     </html>
   );

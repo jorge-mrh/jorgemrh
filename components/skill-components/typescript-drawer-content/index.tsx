@@ -1,20 +1,14 @@
-import TypographyH2 from "@/components/typography/h1";
-import { TypographyP } from "@/components/typography/p";
 import skills from "@/public/skills.json";
+import SkillTitleAndDescription from "../skill-title-and-description";
 
 export default function TypeScriptDrawerContent() {
   const skillDescription =
     skills.development.find((item) => item.TypeScript)?.TypeScript || "";
 
   return (
-    <div className="grid grid-cols-1 items-center gap-10 md:p-10 md:grid-cols-2">
-      <div className="col-span-1 gap-3 flex flex-col">
-        <TypographyH2
-          text={"My experience with TypeScript"}
-          textSize="text-2xl"
-        />
-        <TypographyP text={skillDescription} />
-      </div>
-    </div>
+    <SkillTitleAndDescription
+      title="My experience with TypeScript"
+      description={skillDescription}
+    />
   );
 }

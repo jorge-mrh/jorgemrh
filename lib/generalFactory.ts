@@ -16,7 +16,6 @@ export const designSkills: BadgeElement[] = [
   { name: "Digital Design", color: "bg-indigo-500" },
   { name: "Digital Marketing", color: "bg-green-500" },
   { name: "Motion Design", color: "bg-red-500" },
-  { name: "Photography", color: "bg-emerald-500" },
   { name: "Vídeo", color: "bg-violet-500" },
 ];
 

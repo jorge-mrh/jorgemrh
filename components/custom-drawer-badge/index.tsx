@@ -35,7 +35,7 @@ export default function CustomDrawerBadge({
         <div className="px-6 pb-6">
           {drawerContent || (
             <div className="text-center text-muted-foreground">
-              No additional information available.
+              Nothing was added yet!
             </div>
           )}
         </div>

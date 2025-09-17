@@ -61,64 +61,61 @@ export function AppSidebar({
           <SidebarMenu className="gap-2">
             {documents.map((doc) => (
               <SidebarMenuItem key={doc.id}>
-                <SidebarMenuButton asChild>
-                  <div>
-                    <ContextMenu>
-                      <ContextMenuTrigger>
-                        <button
-                          className="w-full text-left cursor-pointer"
-                          onClick={() => onSelectDoc?.(doc.id)}
+                <ContextMenu>
+                  <ContextMenuTrigger asChild>
+                    <SidebarMenuButton
+                      className="w-full text-left cursor-pointer"
+                      onClick={() => onSelectDoc?.(doc.id)}
+                    >
+                      {doc.name}
+                    </SidebarMenuButton>
+                  </ContextMenuTrigger>
+
+                  <ContextMenuContent>
+                    <Dialog
+                      open={deleteDialogOpen}
+                      onOpenChange={setDeleteDialogOpen}
+                    >
+                      <DialogTrigger asChild>
+                        <ContextMenuItem
+                          className="cursor-pointer"
+                          onSelect={(e) => e.preventDefault()}
                         >
-                          {doc.name}
-                        </button>
-                      </ContextMenuTrigger>
-                      <ContextMenuContent>
-                        <Dialog
-                          open={deleteDialogOpen}
-                          onOpenChange={setDeleteDialogOpen}
-                        >
-                          <DialogTrigger asChild>
-                            <ContextMenuItem
-                              className="cursor-pointer"
-                              onSelect={(e) => e.preventDefault()}
-                            >
-                              <Trash2 />
-                              Delete
-                            </ContextMenuItem>
-                          </DialogTrigger>
-                          <DialogContent>
-                            <DialogHeader>
-                              <DialogTitle>
-                                Are you sure you want to delete {doc.name}?
-                              </DialogTitle>
-                              <DialogDescription>
-                                Removing a document is permanent.
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="flex justify-end gap-2 mt-4">
-                              <button
-                                onClick={() => setDeleteDialogOpen(false)}
-                                className="px-3 py-1 rounded border cursor-pointer"
-                              >
-                                Cancel
-                              </button>
-                              <button
-                                onClick={() => {
-                                  onDeleteDoc(doc.id);
-                                  setDeleteDialogOpen(false);
-                                }}
-                                className="flex items-center gap-5 px-3 py-1 rounded bg-blue-600 text-white cursor-pointer"
-                              >
-                                <Trash2 size={16} />
-                                Delete
-                              </button>
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                      </ContextMenuContent>
-                    </ContextMenu>
-                  </div>
-                </SidebarMenuButton>
+                          <Trash2 />
+                          Delete
+                        </ContextMenuItem>
+                      </DialogTrigger>
+                      <DialogContent>
+                        <DialogHeader>
+                          <DialogTitle>
+                            Are you sure you want to delete {doc.name}?
+                          </DialogTitle>
+                          <DialogDescription>
+                            Removing a document is permanent.
+                          </DialogDescription>
+                        </DialogHeader>
+                        <div className="flex justify-end gap-2 mt-4">
+                          <button
+                            onClick={() => setDeleteDialogOpen(false)}
+                            className="px-3 py-1 rounded border cursor-pointer"
+                          >
+                            Cancel
+                          </button>
+                          <button
+                            onClick={() => {
+                              onDeleteDoc(doc.id);
+                              setDeleteDialogOpen(false);
+                            }}
+                            className="flex items-center gap-5 px-3 py-1 rounded bg-blue-600 text-white cursor-pointer"
+                          >
+                            <Trash2 size={16} />
+                            Delete
+                          </button>
+                        </div>
+                      </DialogContent>
+                    </Dialog>
+                  </ContextMenuContent>
+                </ContextMenu>
               </SidebarMenuItem>
             ))}
           </SidebarMenu>

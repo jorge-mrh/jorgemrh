@@ -1,12 +1,11 @@
 import skills from "@/public/skills.json";
 import SkillTitleAndDescription from "../skill-title-and-description";
-
-export default function ReactDrawerContent() {
+export default function JavaScriptDrawerContent() {
   const skillDescription =
-    skills.development.find((item) => item.React)?.React || "";
+    skills.development.find((item) => item.JavaScript)?.JavaScript || "";
   return (
     <SkillTitleAndDescription
-      title="My experience with React"
+      title="My experience with JavaScript"
       description={skillDescription}
     />
   );

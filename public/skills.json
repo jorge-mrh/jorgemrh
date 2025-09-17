@@ -7,7 +7,37 @@
       "React": "I began using React in 2024 at SDILab. Since then, I've used it to build both personal and professional projects. Here are some tools and libraries I've worked with."
     },
     {
-      "ReactNative": "I began using React in 2024 at SDILab. Since then, I've used it to build both personal and professional projects. Here are some tools and libraries I've worked with."
+      "ReactNative": "I began using React Native in 2024 at SDILab, alongside React, to build a family of applications for both mobile and desktop."
+    },
+    {
+      "JavaScript": "I used JavaScript to refactor a legacy codebase, centralizing AJAX requests in ES6+ classes at Codevision."
+    },
+    {
+      "HTML": "I've used HTML for both professional and academic projects since 2020, including a course at UPSKILL."
+    },
+    {
+      "CSS": "I've used CSS for both professional and academic projects since 2020, including a course at UPSKILL."
+    },
+    {
+      ".NET": "I've used .NET and C# to develop HR application modules for Caixa Geral de Depósitos at Minsait and to automate data lifecycle management at Codevision."
+    },
+    {
+      "SQL": "I worked with SQL to develop features for an education platform at Codevision."
+    },
+    {
+      "Print Design": "As a Graphic Designer, I created print designs for various marketing and communication projects at SIGNA Design."
+    },
+    {
+      "Digital Design": "I worked as a Digital Designer, creating video and motion graphics for clients at Carlo&Stefania Design Studio."
+    },
+    {
+      "Digital Marketing": "I have experience with digital marketing from my time as a Graphic Designer at SIGNA Design."
+    },
+    {
+      "Motion Design": "I have experience with motion design from my time as a Digital Designer and in my freelance work."
+    },
+    {
+      "Vídeo": "I have experience with video from my time as a Digital Designer and in my freelance work."
     }
   ]
 }

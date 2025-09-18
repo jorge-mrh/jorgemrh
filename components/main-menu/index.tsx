@@ -8,9 +8,19 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Download, SquareMousePointer, View } from "lucide-react";
+import {
+  Download,
+  LogIn,
+  LogOut,
+  SquareMousePointer,
+  View,
+} from "lucide-react";
 import Link from "next/link";
 import { useAuthStore } from "@/stores/authStore";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import LoginForm from "../login";
+import { Suspense, useState } from "react";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 function getCVFileName() {
   const currentYear = new Date().getFullYear();
@@ -20,6 +30,9 @@ function getCVFileName() {
 export default function MainMenu() {
   const user = useAuthStore((state) => state.user);
   const loading = useAuthStore((state) => state.loading);
+  const signOut = useAuthStore((state) => state.signOut);
+
+  const [openLoginDialog, setOpenLoginDialog] = useState<boolean>(false);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -27,7 +40,7 @@ export default function MainMenu() {
   return (
     <div className="p-2">
       <NavigationMenu viewport={false}>
-        <NavigationMenuList className="relative">
+        <NavigationMenuList className="relative gap-0 md:gap-5">
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link href="/">home</Link>
@@ -106,6 +119,33 @@ export default function MainMenu() {
               </NavigationMenuContent>
             </NavigationMenuItem>
           )}
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              {user ? (
+                <LogOut
+                  onClick={() => signOut()}
+                  className="cursor-pointer"
+                  size={35}
+                  color="red"
+                />
+              ) : (
+                <Dialog
+                  open={openLoginDialog}
+                  onOpenChange={setOpenLoginDialog}
+                >
+                  <DialogTrigger asChild className="cursor-pointer">
+                    <LogIn size={20} />
+                  </DialogTrigger>
+                  <DialogContent>
+                    <DialogTitle>Login</DialogTitle>
+                    <Suspense fallback={<p>Loading login...</p>}>
+                      <LoginForm />
+                    </Suspense>
+                  </DialogContent>
+                </Dialog>
+              )}
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
     </div>

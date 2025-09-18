@@ -18,10 +18,6 @@ export default function Home() {
         <PersonalCard />
         <SkillsSection />
       </div>
-
-      <Suspense fallback={<p>Loading login...</p>}>
-        <LoginForm />
-      </Suspense>
     </div>
   );
 }

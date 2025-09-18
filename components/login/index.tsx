@@ -36,7 +36,7 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="flex flex-col gap-6 w-sm md:w-md">
+    <div className="flex flex-col gap-6 w-full md:w-md">
       <Card>
         <CardHeader>
           <CardTitle>

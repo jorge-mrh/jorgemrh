@@ -125,12 +125,10 @@ export default function NotePod() {
             onSave={handleSaveWithName}
           />
         </header>
-        <div className="flex p-4">
-          <Editor
-            editorSerializedState={editorState}
-            onSerializedChange={(value) => setEditorState(value)}
-          />
-        </div>
+        <Editor
+          editorSerializedState={editorState}
+          onSerializedChange={(value) => setEditorState(value)}
+        />
       </SidebarInset>
     </SidebarProvider>
   );

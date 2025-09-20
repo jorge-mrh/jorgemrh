@@ -46,9 +46,9 @@ export default function SkillsSection() {
         <ToggleGroupItem className="cursor-pointer" value="Design">
           Design
         </ToggleGroupItem>
-        <ToggleGroupItem className="cursor-pointer" value="Interests">
+        {/* <ToggleGroupItem className="cursor-pointer" value="Interests">
           Interests
-        </ToggleGroupItem>
+        </ToggleGroupItem> */}
       </ToggleGroup>
       <TypographyP
         text="Click on any of the items below to view more."

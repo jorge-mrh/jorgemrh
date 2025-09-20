@@ -5,6 +5,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { Geist, Geist_Mono } from "next/font/google";
 import MainMenu from "@/components/main-menu";
 import Providers from "@/provider";
+import MobileMenu from "@/components/mobile-main-menu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased dark overflow-x-hidden`}
       >
         <nav className="flex pt-7 justify-center">
-          <MainMenu></MainMenu>
+          <div className="block md:hidden">
+            <MobileMenu />
+          </div>
+          <div className="hidden md:block">
+            <MainMenu />
+          </div>
         </nav>
 
         <main className="font-sans flex flex-1 max-w-5xl justify-center mr-auto ml-auto py-25 px-5 md:px-0">

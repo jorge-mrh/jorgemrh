@@ -46,45 +46,48 @@ export default function MainMenu() {
               <Link href="/">home</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
-          <NavigationMenuItem>
-            <NavigationMenuTrigger>curriculum</NavigationMenuTrigger>
-            <NavigationMenuContent className="absolute top-full mt-1">
-              <ul className="w-30">
-                <li>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href="/jmrh_cv.pdf"
-                      download={getCVFileName()}
-                      className="flex-row items-center gap-2"
-                    >
-                      <Download />
-                      Download
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href="/jmrh_cv.pdf"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-row items-center gap-2"
-                    >
-                      <View />
-                      View
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link
-                      href="/curriculum"
-                      className="flex-row items-center gap-2"
-                    >
-                      <SquareMousePointer />
-                      Interactive
-                    </Link>
-                  </NavigationMenuLink>
-                </li>
-              </ul>
-            </NavigationMenuContent>
-          </NavigationMenuItem>
+          {user && (
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>curriculum</NavigationMenuTrigger>
+              <NavigationMenuContent className="absolute top-full mt-1">
+                <ul className="w-30">
+                  <li>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/jmrh_cv.pdf"
+                        download={getCVFileName()}
+                        className="flex-row items-center gap-2"
+                      >
+                        <Download />
+                        Download
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/jmrh_cv.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-row items-center gap-2"
+                      >
+                        <View />
+                        View
+                      </Link>
+                    </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/curriculum"
+                        className="flex-row items-center gap-2"
+                      >
+                        <SquareMousePointer />
+                        Interactive
+                      </Link>
+                    </NavigationMenuLink>
+                  </li>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          )}
+
           <NavigationMenuItem>
             <NavigationMenuLink asChild>
               <Link href="/contact">contact</Link>

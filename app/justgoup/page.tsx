@@ -1,9 +1,12 @@
+"use client";
 import ProtectedRoute from "@/components/protected-route";
 import TypographyH1 from "@/components/typography/h1";
 import { TypographyH2 } from "@/components/typography/h2";
 import { TypographyP } from "@/components/typography/p";
+import { useFetchBucketImages } from "@/hooks/data/use-fetch-images-bucker";
 
 export default function JustGoUp() {
+  const { data: images, isLoading, error } = useFetchBucketImages("images");
   return (
     <ProtectedRoute>
       <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
@@ -53,13 +56,16 @@ export default function JustGoUp() {
         </div>
 
         {/* Right column: image/gif grid */}
-        <div className="col-span-1 p-5 bg-emerald-600 rounded-xl">
+        <div className="col-span-1 p-5 rounded-xl">
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            <div className="col-span-1 bg-white/20 aspect-video rounded">
-              Image 1
-            </div>
-            <div className="bg-white/20 aspect-video rounded">Image 2</div>
-            <div className="bg-white/20 aspect-video rounded">Image 3</div>
+            {Array.from(images || []).map((img, index) => (
+              <div
+                key={`${img.fileName}-${index}`}
+                className="col-span-1 bg-white/20 aspect-video rounded"
+              >
+                <img src={img.url}></img>
+              </div>
+            ))}
           </div>
         </div>
       </div>

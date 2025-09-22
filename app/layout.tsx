@@ -39,7 +39,7 @@ export default function RootLayout({
           </div>
         </nav>
 
-        <main className="font-sans flex flex-1 max-w-5xl justify-center mr-auto ml-auto py-25 px-5 md:px-0">
+        <main className="font-sans flex flex-1 max-w-5xl justify-center mr-auto ml-auto md:py-25 px-5 md:px-0">
           <Providers>{children}</Providers>
         </main>
       </body>

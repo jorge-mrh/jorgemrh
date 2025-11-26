@@ -21,7 +21,12 @@ export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [sendingRecovery, setSendingRecovery] = useState(false);
+  const [recoveryEmailSent, setRecoveryEmailSent] = useState(false);
+  const [recoverySentTo, setRecoverySentTo] = useState("");
   const signIn = useAuthStore((state) => state.signIn);
+  const recoverPassword = useAuthStore((state) => state.recoverPassword);
 
   if (user || loading) {
     return null; // already logged in, hide the form
@@ -29,10 +34,30 @@ export default function LoginForm() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSuccessMessage("");
     const { error } = await signIn(email, password);
     if (error) {
       setError(error.message);
     }
+  };
+
+  const handleRecoverPassword = async () => {
+    if (!email) {
+      setError("Please enter your email to recover your password.");
+      return;
+    }
+    setError("");
+    setSuccessMessage("");
+    setSendingRecovery(true);
+    const { error } = await recoverPassword(email);
+    if (error) {
+      setError(error.message);
+    } else {
+      setSuccessMessage("Recovery link sent. Check your email inbox.");
+      setRecoveryEmailSent(true);
+      setRecoverySentTo(email);
+    }
+    setSendingRecovery(false);
   };
 
   return (
@@ -53,35 +78,61 @@ export default function LoginForm() {
         <CardContent>
           <form onSubmit={handleLogin}>
             <div className="flex flex-col gap-6">
-              <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  placeholder="email@example.com"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </div>
-              <div className="grid gap-3">
-                <div className="flex items-center">
-                  <Label htmlFor="password">Password</Label>
+              {recoveryEmailSent ? (
+                <div className="space-y-3">
+                  <p className="text-green-500 text-sm">
+                    Recovery link sent to{" "}
+                    <span className="text-white">{recoverySentTo}</span>.
+                  </p>
+                  <p className="text-green-500 text-sm">
+                    Check your inbox to reset your password.
+                  </p>
                 </div>
-                <Input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </div>
-              {error && <p className="text-red-500 text-sm">{error}</p>}
-              <div className="flex flex-col gap-3">
-                <Button type="submit" className="w-full cursor-pointer">
-                  Login
-                </Button>
-              </div>
+              ) : (
+                <>
+                  <div className="grid gap-3">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="email@example.com"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="grid gap-3">
+                    <div className="flex items-center">
+                      <Label htmlFor="password">Password</Label>
+                    </div>
+                    <Input
+                      id="password"
+                      type="password"
+                      required
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                    />
+                  </div>
+                  {error && <p className="text-red-500 text-sm">{error}</p>}
+                  {successMessage && (
+                    <p className="text-green-500 text-sm">{successMessage}</p>
+                  )}
+                  <div className="flex flex-col gap-3">
+                    <Button
+                      type="button"
+                      variant="link"
+                      className="w-fit px-0"
+                      onClick={handleRecoverPassword}
+                      disabled={sendingRecovery}
+                    >
+                      Forgot your password?
+                    </Button>
+                    <Button type="submit" className="w-full cursor-pointer">
+                      Login
+                    </Button>
+                  </div>
+                </>
+              )}
             </div>
           </form>
         </CardContent>

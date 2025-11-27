@@ -9,7 +9,7 @@ import supabase from "@/lib/supabase";
 import { useAuthStore } from "@/stores/authStore";
 import { useFetchUserProfile } from "@/hooks/data/use-fetch-user-profile";
 import {
-  Contact,
+  Contact as ContactType,
   useFetchContacts,
 } from "@/hooks/data/use-fetch-contacts";
 
@@ -90,7 +90,7 @@ export default function Contact() {
 
     return (
       <div className="flex flex-col gap-3">
-        {contacts.map((contact: Contact) => (
+        {contacts.map((contact: ContactType) => (
           <div
             key={contact.id}
             className="border border-gray-800 rounded-md p-3 space-y-2"

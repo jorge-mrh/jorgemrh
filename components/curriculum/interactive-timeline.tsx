@@ -12,22 +12,32 @@ import { Badge } from "@/components/ui/badge";
 import { Check, ChevronRight, X } from "lucide-react";
 
 export default function InteractiveTimeline() {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const [activeId, setActiveId] = useState<string | null>(null);
+    const sortedData = useMemo(() => [...curriculumData].reverse(), []);
 
+    return (
+        <>
+            <div className="hidden md:flex w-full h-[600px] relative items-center justify-center overflow-hidden bg-neutral-950/50 rounded-xl border border-neutral-800">
+                <DesktopTimeline data={sortedData} />
+            </div>
+            <div className="md:hidden w-full relative bg-neutral-950/50 rounded-xl border border-neutral-800 p-4">
+                <MobileTimeline data={sortedData} />
+            </div>
+        </>
+    );
+}
+
+function DesktopTimeline({ data }: { data: ExperienceItem[] }) {
+    const containerRef = useRef<HTMLDivElement>(null);
     const x = useMotionValue(0);
 
     const ITEM_WIDTH = 280;
     const GAP = 100;
-    const totalWidth = curriculumData.length * (ITEM_WIDTH + GAP);
+    const totalWidth = data.length * (ITEM_WIDTH + GAP);
 
     const centerOffset = typeof window !== 'undefined' ? window.innerWidth / 2 : 500;
 
-    // Reverse data to show Oldest -> Newest (Left -> Right)
-    const sortedData = useMemo(() => [...curriculumData].reverse(), []);
-
     return (
-        <div className="w-full h-[600px] relative flex items-center justify-center overflow-hidden bg-neutral-950/50 rounded-xl border border-neutral-800">
+        <>
             {/* Background Line */}
             <div className="absolute w-full h-[1px] bg-neutral-800" />
 
@@ -40,7 +50,7 @@ export default function InteractiveTimeline() {
                 style={{ x }}
                 whileTap={{ cursor: "grabbing" }}
             >
-                {sortedData.map((item, index) => (
+                {data.map((item, index) => (
                     <TimelineItem
                         key={item.id}
                         item={item}
@@ -48,6 +58,75 @@ export default function InteractiveTimeline() {
                     />
                 ))}
             </motion.div>
+        </>
+    );
+}
+
+function MobileTimeline({ data }: { data: ExperienceItem[] }) {
+    return (
+        <div className="relative flex flex-col gap-8 pl-4 py-8">
+            {/* Vertical Line */}
+            <div className="absolute left-6 top-8 bottom-8 w-[1px] bg-neutral-800" />
+
+            {data.map((item) => (
+                <MobileTimelineItem key={item.id} item={item} />
+            ))}
+        </div>
+    );
+}
+
+function MobileTimelineItem({ item }: { item: ExperienceItem }) {
+    const [isOpen, setIsOpen] = useState(false);
+
+    return (
+        <div className="relative flex gap-6">
+            {/* Dot */}
+            <div className={cn(
+                "w-4 h-4 rounded-full border-2 mt-1.5 flex-shrink-0 z-10 bg-background transition-colors duration-300",
+                isOpen ? "border-primary bg-primary" : "border-neutral-700 bg-neutral-900"
+            )} />
+
+            <div
+                className="flex flex-col gap-2 w-full pr-2 cursor-pointer"
+                onClick={() => setIsOpen(!isOpen)}
+            >
+                <div className="flex flex-col">
+                    <span className="text-xs font-mono text-muted-foreground">{item.period}</span>
+                    <h3 className="font-bold text-lg leading-tight">{item.title}</h3>
+                    <p className="text-sm text-primary font-medium">{item.organization}</p>
+                </div>
+
+                {isOpen && (
+                    <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        className="overflow-hidden"
+                    >
+                        <div className="pt-2 pb-4 space-y-4">
+                            {item.description && <p className="text-sm text-muted-foreground">{item.description}</p>}
+
+                            {item.achievements && item.achievements.length > 0 && (
+                                <ul className="space-y-2">
+                                    {item.achievements.map((ach, i) => (
+                                        <li key={i} className="text-xs text-neutral-400 flex items-start gap-2">
+                                            <ChevronRight className="w-3 h-3 mt-0.5 text-primary flex-shrink-0" />
+                                            {ach}
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+
+                            {item.technologies && (
+                                <div className="flex flex-wrap gap-1 mt-2">
+                                    {item.technologies.map(tech => (
+                                        <Badge key={tech} variant="secondary" className="text-[10px] px-1 py-0 h-5">{tech}</Badge>
+                                    ))}
+                                </div>
+                            )}
+                        </div>
+                    </motion.div>
+                )}
+            </div>
         </div>
     );
 }

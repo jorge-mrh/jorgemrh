@@ -42,14 +42,14 @@ export default function PersonalCard() {
           >
             <BookUser size={14} /> Linkedin
           </a>
-          <a
+          {/* <a
             href="https://www.youtube.com/jorgemrh"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 hover:underline"
           >
             <Play size={14} /> Youtube
-          </a>
+          </a> */}
         </div>
       </PopoverContent>
     </Popover>

@@ -12,9 +12,13 @@ import {
   Contact as ContactType,
   useFetchContacts,
 } from "@/hooks/data/use-fetch-contacts";
+import { useQueryClient } from "@tanstack/react-query";
+import { Check, Eye } from "lucide-react";
+import { toast } from "sonner";
 
 export default function Contact() {
   const user = useAuthStore((state) => state.user);
+  const queryClient = useQueryClient();
   const {
     data: profile,
     isLoading: profileLoading,
@@ -33,6 +37,22 @@ export default function Contact() {
     type: "success" | "error";
     message: string;
   } | null>(null);
+
+  const markAsSeen = async (id: string) => {
+    const { error } = await supabase
+      .from("contacts")
+      .update({ seen: true })
+      .eq("id", id);
+
+    if (error) {
+      toast.error("Failed to mark as seen");
+      return;
+    }
+
+    // Optimistic update or refetch
+    queryClient.invalidateQueries({ queryKey: ["contacts"] });
+    toast.success("Marked as seen");
+  }
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -93,30 +113,45 @@ export default function Contact() {
         {contacts.map((contact: ContactType) => (
           <div
             key={contact.id}
-            className="border border-gray-800 rounded-md p-3 space-y-2"
+            className="border border-gray-800 rounded-md p-3 space-y-2 relative"
           >
-            <div className="flex flex-wrap justify-between gap-2 text-xs text-gray-400">
-              <span>{contact.email}</span>
-              {contact.created_at && (
-                <span>
-                  {new Date(contact.created_at).toLocaleString(undefined, {
-                    dateStyle: "short",
-                    timeStyle: "short",
-                  })}
+            <div className="flex justify-between items-start">
+              <span className="text-xs font-mono text-gray-500">
+                {new Date(contact.created_at || "").toLocaleString("en-US", {
+                  dateStyle: "short",
+                  timeStyle: "short",
+                })}
+              </span>
+              <div className="flex gap-2">
+                {!contact.seen && (
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-6 px-2 text-primary hover:bg-primary/20"
+                    onClick={() => markAsSeen(contact.id)}
+                    title="Mark as Seen"
+                  >
+                    <Eye className="w-3 h-3 mr-1" />
+                    Mark Seen
+                  </Button>
+                )}
+                {contact.seen && (
+                  <span className="text-[10px] uppercase tracking-wide text-green-400 flex items-center gap-1 border border-green-900/50 bg-green-900/20 px-2 rounded-full">
+                    <Check className="w-3 h-3" /> Seen
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-bold text-sm">{contact.email}</span>
+              {contact.profile_id && (
+                <span className="text-xs text-gray-400">
+                  Profile ID: {contact.profile_id}
                 </span>
               )}
             </div>
-            {contact.profile_id && (
-              <p className="text-xs text-gray-400">
-                Profile: {contact.profile_id}
-              </p>
-            )}
-            <p className="text-sm leading-relaxed">{contact.message}</p>
-            {contact.seen && (
-              <p className="text-[11px] uppercase tracking-wide text-green-400">
-                Seen
-              </p>
-            )}
+
+            <p className="text-sm leading-relaxed whitespace-pre-wrap">{contact.message}</p>
           </div>
         ))}
       </div>
@@ -153,9 +188,8 @@ export default function Contact() {
       </Button>
       {feedback && (
         <p
-          className={`text-sm ${
-            feedback.type === "error" ? "text-red-500" : "text-green-500"
-          }`}
+          className={`text-sm ${feedback.type === "error" ? "text-red-500" : "text-green-500"
+            }`}
         >
           {feedback.message}
         </p>

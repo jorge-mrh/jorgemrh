@@ -20,6 +20,7 @@ import { useAuthStore } from "@/stores/authStore";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import LoginForm from "../login";
 import { Suspense, useState } from "react";
+import { ModeToggle } from "../theme-toggle";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
 function getCVFileName() {
@@ -149,8 +150,11 @@ export default function MainMenu() {
               )}
             </NavigationMenuLink>
           </NavigationMenuItem>
+          <NavigationMenuItem>
+            <ModeToggle />
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
-    </div>
+    </div >
   );
 }

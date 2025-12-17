@@ -34,6 +34,7 @@ import LoginForm from "@/components/login";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { Suspense } from "react";
 import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
+import { ModeToggle } from "../theme-toggle";
 
 function getCVFileName() {
   const currentYear = new Date().getFullYear();
@@ -135,8 +136,12 @@ export default function MobileMenu() {
               </DialogContent>
             </Dialog>
           )}
+
+          <div className="mt-auto mb-4">
+            <ModeToggle />
+          </div>
         </nav>
-      </SheetContent>
-    </Sheet>
+      </SheetContent >
+    </Sheet >
   );
 }

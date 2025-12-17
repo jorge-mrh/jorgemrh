@@ -17,11 +17,9 @@ export const getSkillComponent = (skillName: string): React.ReactNode => {
     "Digital Design": <GenericSkillDrawer skillName="Digital Design" />,
     "Digital Marketing": <GenericSkillDrawer skillName="Digital Marketing" />,
     "Motion Design": <GenericSkillDrawer skillName="Motion Design" />,
-    Vídeo: <GenericSkillDrawer skillName="Vídeo" />, // json key matches? 'Vídeo' isn't in standard keys, let's check json. It is "Vídeo"
-    Gaming: <GenericSkillDrawer skillName="Gaming" />, // Check JSON
-    "Game Dev": <GenericSkillDrawer skillName="Game Dev" />, // Check JSON "GameDev"? No, likely missing in JSON provided or named differently? 
-    // Wait, the previous mapping imported specific files. Let's see if they were just wrappers.
-    // Assuming keys match existing mapping logic.
+    Vídeo: <GenericSkillDrawer skillName="Vídeo" />,
+    Gaming: <GenericSkillDrawer skillName="Gaming" />,
+    "Game Dev": <GenericSkillDrawer skillName="Game Dev" />,
     "Fantasy & Sci-Fi": <GenericSkillDrawer skillName="Fantasy & Sci-Fi" />,
     "Movies & Shows": <GenericSkillDrawer skillName="Movies & Shows" />,
     Travel: <GenericSkillDrawer skillName="Travel" />,

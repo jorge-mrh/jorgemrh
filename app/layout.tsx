@@ -27,7 +27,7 @@ export default function RootLayout({
     useAuthStore.getState().initialize();
   }, []);
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased overflow-x-hidden transition-colors duration-300`}
       >

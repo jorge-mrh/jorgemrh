@@ -118,6 +118,15 @@ export default function MainMenu() {
                         NotePod
                       </Link>
                     </NavigationMenuLink>
+                    <NavigationMenuLink asChild>
+                      <Link
+                        href="/glifos"
+                        className="flex-row items-center gap-2"
+                      >
+                        <Download />
+                        Glifos
+                      </Link>
+                    </NavigationMenuLink>
                   </li>
                 </ul>
               </NavigationMenuContent>

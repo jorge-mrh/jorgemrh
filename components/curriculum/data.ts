@@ -19,8 +19,8 @@ export const curriculumData: ExperienceItem[] = [
         title: "Frontend Developer",
         organization: "SDILab",
         period: "2024 – Current",
-        description: "Frontend development focusing on performance and user experience.",
-        technologies: ["React", "React-Native", "TypeScript", "TanStack Query", "Kendo React", "MUI", "Vitest"],
+        description: "Developed a Next.js + Tailwind CSS storefront builder enabling merchants to create and manage fully synchronized online stores, products, and orders.",
+        technologies: ["React", "React-Native", "TypeScript", "TanStack Query", "Kendo React", "MUI", "Vitest", "Next.js", "TailwindCSS"],
         achievements: [
             "Implemented TanStack Query caching with safe, targeted cache updates, cutting perceived latency.",
             "Built customizable Kendo React data grid with filtering, grouping, and persistent configurations.",

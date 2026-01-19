@@ -37,7 +37,16 @@
       "Motion Design": "I have experience with motion design from my time as a Digital Designer and in my freelance work."
     },
     {
-      "Vídeo": "I have experience with video from my time as a Digital Designer and in my freelance work."
+      "TailwindCSS": "I've been using TailwindCSS in my recent projects (SDILab) to build modern, responsive designs efficiently."
+    },
+    {
+      "TanStack Query": "At SDILab, I implemented TanStack Query for efficient server state management, caching, and background updates."
+    },
+    {
+      "Next.js": "I'm using Next.js at SDILab for building performant server-side rendered and statically generated web applications."
+    },
+    {
+      "Video": "I have experience with video from my time as a Digital Designer and in my freelance work."
     }
   ]
 }

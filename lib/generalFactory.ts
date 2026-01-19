@@ -9,6 +9,9 @@ export const developmentSkills: BadgeElement[] = [
   { name: "CSS", color: "bg-blue-600" },
   { name: ".NET", color: "bg-purple-600" },
   { name: "SQL", color: "bg-gray-600" },
+  { name: "TailwindCSS", color: "bg-cyan-600" },
+  { name: "TanStack Query", color: "bg-red-500" },
+  { name: "Next.js", color: "bg-black border border-white" },
 ];
 
 export const designSkills: BadgeElement[] = [
@@ -16,7 +19,7 @@ export const designSkills: BadgeElement[] = [
   { name: "Digital Design", color: "bg-indigo-500" },
   { name: "Digital Marketing", color: "bg-green-500" },
   { name: "Motion Design", color: "bg-red-500" },
-  { name: "Vídeo", color: "bg-violet-500" },
+  { name: "Video", color: "bg-violet-500" },
 ];
 
 export const interests: BadgeElement[] = [

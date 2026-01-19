@@ -70,7 +70,6 @@ export default function MobileMenu() {
             contact
           </Link>
 
-          {user && (
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="curriculum">
                 <AccordionTrigger className="text-lg">
@@ -78,14 +77,14 @@ export default function MobileMenu() {
                 </AccordionTrigger>
                 <AccordionContent className="flex flex-col gap-2 pl-3">
                   <Link
-                    href="/jmrh_cv.pdf"
+                    href="/jorge_henriques_cv-en.pdf"
                     download={getCVFileName()}
                     className="flex items-center gap-2"
                   >
                     <Download size={16} /> Download
                   </Link>
                   <Link
-                    href="/jmrh_cv.pdf"
+                    href="/jorge_henriques_cv-en.pdf"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2"
@@ -98,21 +97,22 @@ export default function MobileMenu() {
                 </AccordionContent>
               </AccordionItem>
 
-              <AccordionItem value="funstuff">
-                <AccordionTrigger className="text-lg">
-                  fun stuff
-                </AccordionTrigger>
-                <AccordionContent className="flex flex-col gap-2 pl-3">
-                  <Link href="/justgoup" className="flex items-center gap-2">
-                    <Download size={16} /> Just Go Up
-                  </Link>
-                  <Link href="/notepod" className="flex items-center gap-2">
-                    <Download size={16} /> NotePod
-                  </Link>
-                </AccordionContent>
-              </AccordionItem>
+              {user && (
+                <AccordionItem value="funstuff">
+                  <AccordionTrigger className="text-lg">
+                    fun stuff
+                  </AccordionTrigger>
+                  <AccordionContent className="flex flex-col gap-2 pl-3">
+                    <Link href="/justgoup" className="flex items-center gap-2">
+                      <Download size={16} /> Just Go Up
+                    </Link>
+                    <Link href="/notepod" className="flex items-center gap-2">
+                      <Download size={16} /> NotePod
+                    </Link>
+                  </AccordionContent>
+                </AccordionItem>
+              )}
             </Accordion>
-          )}
 
           {user ? (
             <button

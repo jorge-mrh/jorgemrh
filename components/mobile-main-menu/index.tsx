@@ -9,6 +9,7 @@ import {
   LogOut,
   SquareMousePointer,
   View,
+  Film,
 } from "lucide-react";
 import {
   Sheet,
@@ -93,6 +94,9 @@ export default function MobileMenu() {
                   </Link>
                   <Link href="/curriculum" className="flex items-center gap-2">
                     <SquareMousePointer size={16} /> Interactive
+                  </Link>
+                  <Link href="/motion" className="flex items-center gap-2">
+                    <Film size={16} /> Motion Work
                   </Link>
                 </AccordionContent>
               </AccordionItem>

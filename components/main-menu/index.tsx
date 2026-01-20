@@ -14,6 +14,7 @@ import {
   LogOut,
   SquareMousePointer,
   View,
+  Film,
 } from "lucide-react";
 import Link from "next/link";
 import { useAuthStore } from "@/stores/authStore";
@@ -80,6 +81,15 @@ export default function MainMenu() {
                     >
                       <SquareMousePointer />
                       Interactive
+                    </Link>
+                  </NavigationMenuLink>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/motion"
+                      className="flex-row items-center gap-2"
+                    >
+                      <Film />
+                      Motion Work
                     </Link>
                   </NavigationMenuLink>
                 </li>
